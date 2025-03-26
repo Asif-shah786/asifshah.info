@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://abdulrahman.id',
-  generateRobotsTxt: true,
+    siteUrl: process.env.SITE_URL || 'https://asifshah.info',
+    generateRobotsTxt: true,
 }
