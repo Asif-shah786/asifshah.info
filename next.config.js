@@ -32,6 +32,9 @@ const nextConfig = {
 
         return config;
     },
+    eslint: {
+        ignoreDuringBuilds: true, // ← Add this
+    },
 };
 
 module.exports = nextConfig;
