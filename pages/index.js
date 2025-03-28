@@ -14,41 +14,41 @@ export default function Index({ introduction, projects, articles, contactMe }) {
         <>
             <Container enableTransition={true}>
                 <Head>
-                    <title>Abdul Rahman - Software Engineer</title>
-                    <meta content="Abdul Rahman - Software Engineer" name="title" />
+                    <title>Asif Shah - Software Engineer</title>
+                    <meta content="Asif Shah - Software Engineer" name="title" />
                     <meta content="Asif-shah786, Asif-shah786 website" name="keywords" />
                     <meta
-                        content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
+                        content="Software Engineer based in UK, an postgraduate student at University of Salford."
                         name="description"
                     />
 
                     <meta content="website" property="og:type" />
                     <meta content="https://asifshah.info" property="og:url" />
                     <meta
-                        content="Abdul Rahman - Software Engineer"
+                        content="Asif Shah - Software Engineer"
                         property="og:title"
                     />
                     <meta
-                        content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
+                        content="Software Engineer based in UK, an postgraduate student at University of Salford."
                         property="og:description"
                     />
                     <meta
-                        content="https://imagizer.imageshack.com/a/img922/7423/0P3Xty.png"
+                        content="https://asifshah.info/og.png"
                         property="og:image"
                     />
 
                     <meta content="summary_large_image" property="twitter:card" />
                     <meta content="https://asifshah.info/" property="twitter:url" />
                     <meta
-                        content="Abdul Rahman - Software Engineer"
+                        content="Asif Shah - Software Engineer"
                         property="twitter:title"
                     />
                     <meta
-                        content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
+                        content="Software Engineer based in UK, an postgraduate student at University of Salford."
                         property="twitter:description"
                     />
                     <meta
-                        content="https://imagizer.imageshack.com/a/img922/7423/0P3Xty.png"
+                        content="https://asifshah.info/og.png"
                         property="twitter:image"
                     />
                 </Head>

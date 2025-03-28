@@ -14,16 +14,6 @@ import ReactGA from 'react-ga4'
 
 export default function Introduction({ introduction }) {
     const isLargerThan800 = useMediaQuery(800)
-
-    // Add safety check for introduction data
-    if (!introduction || introduction.length === 0) {
-        return (
-            <Stack>
-                <Text>Loading introduction...</Text>
-            </Stack>
-        )
-    }
-
     const handleClick = (event) => {
         ReactGA.event({
             category: 'click',
@@ -88,13 +78,10 @@ export default function Introduction({ introduction }) {
                     letterSpacing="-1.6px"
                     whiteSpace="pre-wrap"
                 >
-                    <Box as="span" color="displayColor">
-                        Software Engineer.
-                    </Box>{' '}
-                    A self-taught developer{' '}
+                    Flutter Developer & Data Science Enthusiast.{' '}
                     {isLargerThan800
-                        ? 'with an\ninterest in Computer Science.'
-                        : 'with an interest in Computer Science.'}
+                        ? 'with an\ninterest in Data Science.'
+                        : 'with an interest in Data Science.'}
                 </Heading>
             </SlideFade>
 
@@ -104,34 +91,28 @@ export default function Introduction({ introduction }) {
                 in={true}
             >
                 <Text color="textSecondary" fontSize="display3">
-                    {introduction[0] && introduction[0].fields && (
-                        <>
-                            {introduction[0].fields.emoji} {introduction[0].fields.description}
-                        </>
-                    )}
+                    {introduction[0].fields.emoji} {introduction[0].fields.description}
                     <br />
-                    {introduction.length > 1 && introduction[1] && introduction[1].fields && (
-                        <Stack isInline spacing={1}>
-                            <Box>{introduction[1].fields.emoji}</Box>
-                            <Box>
-                                {introduction[1].fields.description}{' '}
-                                {introduction[1].fields.companyUrl ? (
-                                    <Link
-                                        href={introduction[1].fields.companyUrl}
-                                        isExternal
-                                        onClick={() => handleClick('Introduction_companyUrl')}
-                                        rel="noreferrer"
-                                    >
-                                        {introduction[1].fields.company}
-                                    </Link>
-                                ) : (
-                                    <Box as="span" color="button1">
-                                        {introduction[1].fields.company}
-                                    </Box>
-                                )}
-                            </Box>
-                        </Stack>
-                    )}
+                    <Stack isInline spacing={1}>
+                        <Box>{introduction[1].fields.emoji}</Box>
+                        <Box>
+                            {introduction[1].fields.description}{' '}
+                            {introduction[1].fields.companyUrl ? (
+                                <Link
+                                    href={introduction[1].fields.companyUrl}
+                                    isExternal
+                                    onClick={() => handleClick('Introduction_companyUrl')}
+                                    rel="noreferrer"
+                                >
+                                    {introduction[1].fields.company}
+                                </Link>
+                            ) : (
+                                <Box as="span" color="button1">
+                                    {introduction[1].fields.company}
+                                </Box>
+                            )}
+                        </Box>
+                    </Stack>
                 </Text>
             </SlideFade>
             <SlideFade
@@ -140,34 +121,51 @@ export default function Introduction({ introduction }) {
                 in={true}
             >
                 <Stack isInline spacing={4}>
-                    <Link href="https://github.com/Asif-shah786" isExternal>
+                    <Link href="https://github.com/Asif-Shah786" isExternal>
                         <Button
                             pos="static"
                             color="white"
-                            leftIcon={<FaGithub color="#3CCF91" />}
+                            bg="button1"
+                            _hover={{
+                                bg: "rgba(60, 207, 145, 0.8)",
+                                transform: "translateY(-2px)"
+                            }}
+                            transition="all 0.3s ease"
+                            leftIcon={<FaGithub color="white" />}
                             onClick={() => handleClick('introduction_github')}
                             size={isLargerThan800 ? 'md' : 'sm'}
                         >
                             Github
                         </Button>
                     </Link>
-                    <Link href="https://linkedin.com/in/Asif-shah786" isExternal>
+                    <Link href="https://linkedin.com/in/syedasif007" isExternal>
                         <Button
                             pos="static"
                             color="white"
-                            leftIcon={<FaLinkedin color="#3CCF91" />}
+                            bg="button1"
+                            _hover={{
+                                bg: "rgba(60, 207, 145, 0.8)",
+                                transform: "translateY(-2px)"
+                            }}
+                            transition="all 0.3s ease"
+                            leftIcon={<FaLinkedin color="white" />}
                             onClick={() => handleClick('introduction_linkedin')}
                             size={isLargerThan800 ? 'md' : 'sm'}
                         >
                             LinkedIn
                         </Button>
                     </Link>
-                    <Link href="mailto:Asif-shah7861@gmail.com" isExternal>
+                    <Link href="mailto:asif.shah9091@gmail.com" isExternal>
                         <Button
                             pos="static"
                             color="white"
-                            transition="0.3s"
-                            leftIcon={<FaEnvelope fill="#3CCF91" />}
+                            bg="button1"
+                            _hover={{
+                                bg: "rgba(60, 207, 145, 0.8)",
+                                transform: "translateY(-2px)"
+                            }}
+                            transition="all 0.3s ease"
+                            leftIcon={<FaEnvelope fill="white" />}
                             onClick={() => handleClick('introduction_email')}
                             size={isLargerThan800 ? 'md' : 'sm'}
                         >

@@ -18,8 +18,8 @@ export default function Index({ posts }) {
     return (
         <Container>
             <Head>
-                <title>Blog - Abdul Rahman</title>
-                <meta content="Blog - Abdul Rahman" name="title" />
+                <title>Blog - Asif Shah</title>
+                <meta content="Blog - Asif Shah" name="title" />
                 <meta
                     content="Writings on programming, tutorials, and my experiences."
                     name="description"
@@ -27,7 +27,7 @@ export default function Index({ posts }) {
 
                 <meta content="website" property="og:type" />
                 <meta content="https://asifshah.info/blog" property="og:url" />
-                <meta content="Blog - Abdul Rahman" property="og:title" />
+                <meta content="Blog - Asif Shah" property="og:title" />
                 <meta
                     content="Writings on programming, tutorials, and my experiences."
                     property="og:description"
@@ -39,7 +39,7 @@ export default function Index({ posts }) {
 
                 <meta content="summary_large_image" property="twitter:card" />
                 <meta content="https://asifshah.info/" property="twitter:url" />
-                <meta content="Blog - Abdul Rahman" property="twitter:title" />
+                <meta content="Blog - Asif Shah" property="twitter:title" />
                 <meta
                     content="Writings on programming, tutorials, and my experiences."
                     property="twitter:description"
