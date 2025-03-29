@@ -12,7 +12,8 @@ const nextConfig = {
             'play-lh.googleusercontent.com',
             'imagizer.imageshack.com',
             'cdn.contentful.com',
-            'images.ctfassets.net'
+            'images.ctfassets.net',
+            'www.upwork.com'
         ],
         remotePatterns: [
             {
@@ -24,8 +25,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'play-lh.googleusercontent.com',
                 pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.upwork.com',
+                pathname: '/att/download/**',
             }
-        ]
+        ],
+        unoptimized: true
     },
     webpack: (config) => {
         // camel-case style names from css modules
