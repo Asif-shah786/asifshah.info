@@ -12,11 +12,15 @@ import {
     PopoverContent,
     PopoverBody,
     PopoverArrow,
+    Link,
+    HStack,
+    Icon,
 } from '@chakra-ui/react'
 
 import useMediaQuery from '../hook/useMediaQuery'
 import SlideUpWhenVisible from '../hook/SlideUpWhenVisible'
 import ReactGA from 'react-ga4'
+import { FaMedium } from 'react-icons/fa'
 
 export default function AboutMe() {
     const isLargerThan800 = useMediaQuery(800)
@@ -26,6 +30,14 @@ export default function AboutMe() {
             action: event,
         })
     }
+
+    const handleClick = (event) => {
+        ReactGA.event({
+            category: 'click',
+            action: event,
+        })
+    }
+
     const MoreInfo = ({ text, content }) => {
         return (
             <>
@@ -61,7 +73,7 @@ export default function AboutMe() {
         <>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
                 <SlideUpWhenVisible>
-                    <Stack spacing={4}>
+                    <Stack spacing={5}>
                         <Heading fontFamily="Ubuntu" fontSize="2xl">
                             ⚡ About Me
                         </Heading>
@@ -69,31 +81,69 @@ export default function AboutMe() {
                             color="textSecondary"
                             fontSize={{ base: '14px', md: '16px' }}
                             whiteSpace="pre-line"
+                            lineHeight="taller"
                         >
-                            Hey! I'm Asif Shah, a Flutter developer and Data Science master's student at the University of Salford.
-                            My coding journey started with mobile app development, and I've expanded into data engineering to enhance my skill set. <br />
-                            <br /> I began exploring programming by building mobile apps with Flutter and gradually expanded my expertise to include backend development with FastAPI.
-                            Fast-forward to today, I work with various technologies, specializing in Flutter for mobile and web development, deploying machine learning models, and integrating them with web apps. <br />
-                            <br />
-                            As a freelancer on Upwork, I've successfully delivered mobile app projects while continuously improving my skills.
-                            Now, I'm focused on building intelligent applications, enhancing my data engineering knowledge, and exploring opportunities in{' '}
+                            A passionate <chakra.span fontWeight="bold" color="button1">Full Stack Mobile App Developer</chakra.span> with a strong background in both software engineering and data science. Currently pursuing my MSc in Data Science at the University of Salford, I have a deep understanding of machine learning, big data tools, and applied statistics, which I apply in creating impactful software solutions.
+                            <br /><br />
+                            Over the past few years, I have gained hands-on experience in mobile and web app development, successfully completing <chakra.span fontWeight="bold" color="white">25+ projects</chakra.span> on Upwork/Fiverr with consistent <chakra.span fontWeight="bold" color="yellow.400">5-star ratings</chakra.span>. My expertise in
                             <MoreInfo
-                                content="Building high-quality apps with Flutter for both mobile and web platforms."
-                                text="Web & Mobile Development,"
-                            />
+                                content="Building cross-platform mobile applications with Flutter and Dart."
+                                text="Flutter"
+                            />,
                             <MoreInfo
-                                content="Leveraging backend technologies like FastAPI to integrate machine learning models and build efficient systems."
-                                text="Backend Development,"
-                            />
-                            and
+                                content="Backend-as-a-Service platform for building web and mobile applications."
+                                text="Firebase"
+                            />, and
                             <MoreInfo
-                                content="Applying data engineering techniques to build robust data pipelines and make predictions using machine learning models."
-                                text="Data Engineering."
+                                content="Designing and implementing efficient database solutions."
+                                text="SQL databases"
                             />
-                            <br />
-                            <br />
-                            When I'm not coding, I'm at the gym, learning something new, or working on my side projects to sharpen my skills. ⚡
+                            has enabled me to deliver seamless, user-friendly applications that meet both business and user needs.
+                            <br /><br />
+                            I've collaborated with companies like <chakra.span fontWeight="medium" color="white">Nutone Fitness Inc.</chakra.span> and <chakra.span fontWeight="medium" color="white">Balanse Inc.</chakra.span>, where I revamped fitness applications, developed mobile apps for elderly users, and implemented innovative features to drive user retention and satisfaction.
+                            <br /><br />
+                            My approach focuses on
+                            <MoreInfo
+                                content="Building software with a strong separation of concerns and maintainable code organization."
+                                text="clean architecture"
+                            />,
+                            <MoreInfo
+                                content="Developing reusable, independent components that can be easily maintained and tested."
+                                text="modular design"
+                            />, and
+                            <MoreInfo
+                                content="Leveraging analytics and metrics to guide product development and feature prioritization."
+                                text="data-driven solutions"
+                            />.
+                            I'm always looking for new challenges that push the boundaries of what's possible in mobile and web development.
+                            <br /><br />
+                            When I'm not coding, I enjoy writing about technology and general philosophy on Medium.
                         </Text>
+
+                        <Link
+                            href="https://medium.com/@syedasif0221"
+                            isExternal
+                            alignSelf="flex-start"
+                            onClick={() => handleClick('medium_profile')}
+                            _hover={{ textDecoration: "none" }}
+                        >
+                            <HStack
+                                spacing={2}
+                                mt={1}
+                                bg="rgba(60, 207, 145, 0.05)"
+                                borderWidth="1px"
+                                borderColor="button1"
+                                p={2}
+                                borderRadius="md"
+                                _hover={{
+                                    bg: "rgba(60, 207, 145, 0.1)",
+                                }}
+                                transition="all 0.3s ease"
+                            >
+                                <Icon as={FaMedium} color="button1" />
+                                <Text fontSize="sm" color="gray.300">Read my articles on Medium</Text>
+                            </HStack>
+                        </Link>
                     </Stack>
                 </SlideUpWhenVisible>
                 <SlideUpWhenVisible>
