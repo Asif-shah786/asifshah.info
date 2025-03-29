@@ -8,10 +8,24 @@ const nextConfig = {
             'github.com',
             'raw.githubusercontent.com',
             'avatars.githubusercontent.com',
+            'user-images.githubusercontent.com',
+            'play-lh.googleusercontent.com',
             'imagizer.imageshack.com',
             'cdn.contentful.com',
             'images.ctfassets.net'
         ],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**.githubusercontent.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'play-lh.googleusercontent.com',
+                pathname: '/**',
+            }
+        ]
     },
     webpack: (config) => {
         // camel-case style names from css modules
