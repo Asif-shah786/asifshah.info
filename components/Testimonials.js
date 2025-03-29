@@ -21,7 +21,9 @@ import {
     chakra,
     shouldForwardProp,
     Badge,
-    Tag
+    Tag,
+    Grid,
+    SimpleGrid
 } from '@chakra-ui/react'
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useState } from 'react'
@@ -82,16 +84,16 @@ export default function Testimonials() {
     ];
 
     return (
-        <Box>
+        <Box width="100%">
             <SlideUpWhenVisible>
                 <Flex
-                    direction="row"
+                    direction={{ base: "column", md: "row" }}
                     justify="space-between"
-                    align="flex-start"
+                    align={{ base: "flex-start", md: "flex-start" }}
                     mb={{ base: 8, md: 16 }}
-                    flexWrap="wrap"
+                    width="100%"
                 >
-                    <Box maxW={{ base: "100%", md: "40%" }} mb={{ base: 6, md: 0 }}>
+                    <Box maxW={{ base: "100%", md: "40%" }} mb={{ base: 8, md: 0 }}>
                         <Text
                             textTransform="uppercase"
                             fontSize="xs"
@@ -112,159 +114,93 @@ export default function Testimonials() {
                         </Heading>
                     </Box>
 
-                    <Box>
-                        <HStack
-                            spacing={6}
-                            divider={<Text color="gray.500" mx={2}>•</Text>}
+                    <Box width={{ base: "100%", md: "auto" }}>
+                        <Stack
+                            direction={{ base: "row", sm: "row" }}
+                            spacing={{ base: 4, md: 6 }}
+                            divider={<Text color="gray.500" mx={{ base: 1, md: 2 }}>•</Text>}
                             flexWrap="wrap"
+                            justify={{ base: "space-between", md: "flex-start" }}
+                            width="100%"
                         >
                             <VStack align="start" spacing={0}>
-                                <Text fontSize="3xl" fontWeight="bold" color="button1">100%</Text>
+                                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="button1">100%</Text>
                                 <Text fontSize="sm" color="gray.400">Job Success</Text>
                             </VStack>
                             <VStack align="start" spacing={0}>
-                                <Text fontSize="3xl" fontWeight="bold" color="button1">19</Text>
+                                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="button1">19</Text>
                                 <Text fontSize="sm" color="gray.400">Reviews</Text>
                             </VStack>
                             <VStack align="start" spacing={0}>
-                                <Text fontSize="3xl" fontWeight="bold" color="button1">★★★★★</Text>
+                                <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="button1">★★★★★</Text>
                                 <Text fontSize="sm" color="gray.400">Rating</Text>
                             </VStack>
-                        </HStack>
+                        </Stack>
                     </Box>
                 </Flex>
             </SlideUpWhenVisible>
 
+            {/* Desktop version - shown on medium screens and larger */}
+            <Box display={{ base: "none", md: "block" }} width="100%">
+                <SimpleGrid columns={{ md: 2, lg: 3 }} spacing={6} my={4} py={4}>
+                    {testimonials.map((testimonial, index) => (
+                        <TestimonialCard
+                            key={index}
+                            testimonial={testimonial}
+                            index={index}
+                            hoveredIndex={hoveredIndex}
+                            setHoveredIndex={setHoveredIndex}
+                            openModal={openModal}
+                        />
+                    ))}
+                </SimpleGrid>
+            </Box>
+
+            {/* Mobile version - only visible on small screens */}
             <Box
-                position="relative"
+                display={{ base: "block", md: "none" }}
+                width="100%"
+                overflowX="auto"
+                overflowY="hidden"
                 sx={{
-                    '@media(max-width: 768px)': {
-                        overflowX: 'auto',
-                        overflowY: 'hidden',
-                        WebkitOverflowScrolling: 'touch',
-                        scrollbarWidth: 'none',
-                        msOverflowStyle: 'none',
-                        '&::-webkit-scrollbar': {
-                            display: 'none'
-                        }
-                    }
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                    WebkitOverflowScrolling: 'touch',
+                    '&::-webkit-scrollbar': {
+                        display: 'none'
+                    },
+                    '-webkit-overflow-scrolling': 'touch'
                 }}
+                pb={4}
             >
-                <HStack
-                    spacing={6}
+                <Flex
+                    direction="row"
                     my={4}
-                    py={4}
-                    alignItems="stretch"
-                    sx={{
-                        '@media(max-width: 768px)': {
-                            display: 'flex',
-                            width: 'calc(320px * 3 + 24px * 2)', // Card width * count + spacing * (count-1)
-                            paddingLeft: '4px',
-                            paddingRight: '20px',
-                        }
-                    }}
+                    py={2}
+                    width="max-content"
+                    minWidth="100%"
+                    px={1}
                 >
                     {testimonials.map((testimonial, index) => (
-                        <MotionBox
+                        <Box
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            w={{ base: '320px', md: '1/3' }}
-                            minW={{ base: '320px', md: '0' }}
-                            onClick={() => openModal(testimonial)}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
-                            role="group"
-                            cursor="pointer"
-                            position="relative"
+                            width={{ base: "85vw" }}
+                            maxWidth="350px"
+                            minWidth="280px"
+                            mr={4}
+                            flexShrink={0}
                         >
-                            <Box
-                                h="100%"
-                                bg="#111"
-                                py={8}
-                                px={7}
-                                borderRadius="md"
-                                boxShadow={hoveredIndex === index
-                                    ? "0 20px 40px -15px rgba(60, 207, 145, 0.15)"
-                                    : "none"
-                                }
-                                transition="all 0.3s ease"
-                                position="relative"
-                                overflow="hidden"
-                                _before={{
-                                    content: '""',
-                                    position: 'absolute',
-                                    top: '0',
-                                    left: '0',
-                                    width: '100%',
-                                    height: '100%',
-                                    background: hoveredIndex === index
-                                        ? 'linear-gradient(45deg, rgba(60, 207, 145, 0.03), rgba(17, 17, 17, 0.8))'
-                                        : 'none',
-                                    transition: 'all 0.3s ease',
-                                }}
-                            >
-                                <VStack
-                                    spacing={6}
-                                    align="start"
-                                    justify="space-between"
-                                    h="100%"
-                                >
-                                    <Icon
-                                        as={FaQuoteLeft}
-                                        color="button1"
-                                        boxSize={4}
-                                        opacity={0.8}
-                                    />
-
-                                    <Text
-                                        fontSize="lg"
-                                        fontWeight="medium"
-                                        lineHeight="tall"
-                                        color="white"
-                                    >
-                                        {testimonial.quote}
-                                    </Text>
-
-                                    <Box w="full">
-                                        <Divider borderColor="whiteAlpha.200" mb={5} />
-
-                                        <HStack spacing={3} justify="space-between" align="center">
-                                            <Box>
-                                                <Text
-                                                    fontWeight="bold"
-                                                    color="button1"
-                                                    mb={1}
-                                                >
-                                                    {testimonial.name}
-                                                </Text>
-                                                {testimonial.title && (
-                                                    <Text fontSize="xs" color="gray.400">
-                                                        {testimonial.title}
-                                                    </Text>
-                                                )}
-                                            </Box>
-
-                                            <MotionBox
-                                                whileHover={{ scale: 1.1 }}
-                                                whileTap={{ scale: 0.95 }}
-                                            >
-                                                <Icon
-                                                    as={FaArrowRight}
-                                                    color="button1"
-                                                    boxSize={5}
-                                                    opacity={hoveredIndex === index ? 1 : 0.5}
-                                                    transition="all 0.2s"
-                                                />
-                                            </MotionBox>
-                                        </HStack>
-                                    </Box>
-                                </VStack>
-                            </Box>
-                        </MotionBox>
+                            <TestimonialCard
+                                testimonial={testimonial}
+                                index={index}
+                                hoveredIndex={hoveredIndex}
+                                setHoveredIndex={setHoveredIndex}
+                                openModal={openModal}
+                                isMobile={true}
+                            />
+                        </Box>
                     ))}
-                </HStack>
+                </Flex>
             </Box>
 
             <SlideUpWhenVisible>
@@ -412,4 +348,109 @@ export default function Testimonials() {
             </Modal>
         </Box>
     )
-} 
+}
+
+// Extracted TestimonialCard component for better maintainability
+const TestimonialCard = ({ testimonial, index, hoveredIndex, setHoveredIndex, openModal, isMobile = false }) => {
+    return (
+        <MotionBox
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            onClick={() => openModal(testimonial)}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            role="group"
+            cursor="pointer"
+            position="relative"
+            height="100%"
+            width="100%"
+        >
+            <Box
+                h="100%"
+                bg="#111"
+                py={6}
+                px={5}
+                borderRadius="md"
+                boxShadow={hoveredIndex === index
+                    ? "0 20px 40px -15px rgba(60, 207, 145, 0.15)"
+                    : "none"
+                }
+                transition="all 0.3s ease"
+                position="relative"
+                overflow="hidden"
+                _before={{
+                    content: '""',
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    width: '100%',
+                    height: '100%',
+                    background: hoveredIndex === index
+                        ? 'linear-gradient(45deg, rgba(60, 207, 145, 0.03), rgba(17, 17, 17, 0.8))'
+                        : 'none',
+                    transition: 'all 0.3s ease',
+                }}
+            >
+                <VStack
+                    spacing={4}
+                    align="start"
+                    justify="space-between"
+                    h="100%"
+                >
+                    <Icon
+                        as={FaQuoteLeft}
+                        color="button1"
+                        boxSize={4}
+                        opacity={0.8}
+                    />
+
+                    <Text
+                        fontSize={{ base: "md", md: "lg" }}
+                        fontWeight="medium"
+                        lineHeight="tall"
+                        color="white"
+                        noOfLines={isMobile ? 6 : undefined}
+                    >
+                        {testimonial.quote}
+                    </Text>
+
+                    <Box w="full" mt="auto">
+                        <Divider borderColor="whiteAlpha.200" mb={4} />
+
+                        <HStack spacing={3} justify="space-between" align="center">
+                            <Box>
+                                <Text
+                                    fontWeight="bold"
+                                    color="button1"
+                                    mb={1}
+                                    fontSize={{ base: "sm", md: "md" }}
+                                >
+                                    {testimonial.name}
+                                </Text>
+                                {testimonial.title && (
+                                    <Text fontSize="xs" color="gray.400">
+                                        {testimonial.title}
+                                    </Text>
+                                )}
+                            </Box>
+
+                            <MotionBox
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Icon
+                                    as={FaArrowRight}
+                                    color="button1"
+                                    boxSize={4}
+                                    opacity={hoveredIndex === index ? 1 : 0.5}
+                                    transition="all 0.2s"
+                                />
+                            </MotionBox>
+                        </HStack>
+                    </Box>
+                </VStack>
+            </Box>
+        </MotionBox>
+    );
+};

@@ -6,19 +6,27 @@ import ReactGA from 'react-ga4'
 
 export default function ContactMe({ contactMe }) {
     const isLargerThan800 = useMediaQuery(800)
+
     const handleClick = (event) => {
         ReactGA.event({
             category: 'click',
             action: event,
         })
     }
+
     return (
-        <Stack alignItems="center" justifyContent="center" w="100%" spacing={10}>
-            <SlideUpWhenVisible>
-                <Flex direction="column" align="center">
+        <Stack
+            alignItems="center"
+            justifyContent="center"
+            w="100%"
+            spacing={{ base: 6, md: 10 }}
+            px={{ base: 4, md: 0 }}
+        >
+            <SlideUpWhenVisible threshold={0.1}>
+                <Flex direction="column" align="center" width="100%">
                     <Text
                         textTransform="uppercase"
-                        fontSize="sm"
+                        fontSize={{ base: "xs", md: "sm" }}
                         letterSpacing="wider"
                         color="button1"
                         fontWeight="medium"
@@ -27,7 +35,7 @@ export default function ContactMe({ contactMe }) {
                         Contact Information
                     </Text>
                     <Heading
-                        fontSize={{ base: '4xl', md: '5xl' }}
+                        fontSize={{ base: '3xl', sm: '4xl', md: '5xl' }}
                         textAlign="center"
                         letterSpacing="tight"
                         lineHeight="1.2"
@@ -37,12 +45,13 @@ export default function ContactMe({ contactMe }) {
                 </Flex>
             </SlideUpWhenVisible>
 
-            <SlideUpWhenVisible>
-                <Box maxW="650px" textAlign="center">
+            <SlideUpWhenVisible threshold={0.1}>
+                <Box maxW="650px" textAlign="center" width="100%">
                     <Text
                         color="textSecondary"
-                        fontSize={{ base: "md", md: "lg" }}
+                        fontSize={{ base: "sm", sm: "md", md: "lg" }}
                         lineHeight="tall"
+                        px={{ base: 2, md: 0 }}
                     >
                         {contactMe[0].fields.title}{' '}
                         <chakra.span
@@ -50,32 +59,35 @@ export default function ContactMe({ contactMe }) {
                             fontWeight="medium"
                             display={{ base: 'block', md: 'inline' }}
                         >
-                            {' '}
                             {contactMe[0].fields.highlightText}
                         </chakra.span>
                         .
                     </Text>
                     <Text
                         color="gray.400"
-                        fontSize={{ base: "sm", md: "md" }}
+                        fontSize={{ base: "xs", sm: "sm", md: "md" }}
                         mt={2}
+                        px={{ base: 2, md: 0 }}
                     >
                         {contactMe[0].fields.description}
                     </Text>
                 </Box>
             </SlideUpWhenVisible>
 
-            <SlideUpWhenVisible>
+            <SlideUpWhenVisible threshold={0.1}>
                 <Stack
                     direction={{ base: "column", sm: "row" }}
-                    spacing={4}
-                    mt={2}
+                    spacing={{ base: 3, md: 4 }}
+                    mt={{ base: 1, md: 2 }}
+                    width={{ base: "100%", sm: "auto" }}
+                    align="center"
                 >
                     <Link
                         href="https://linkedin.com/in/syedasif007"
                         isExternal
                         onClick={() => handleClick('contact_linkedin')}
                         _hover={{ textDecoration: "none" }}
+                        width={{ base: "100%", sm: "auto" }}
                     >
                         <Button
                             pos="static"
@@ -90,6 +102,7 @@ export default function ContactMe({ contactMe }) {
                                 color: "black"
                             }}
                             transition="all 0.3s ease"
+                            width={{ base: "100%", sm: "auto" }}
                         >
                             LinkedIn
                         </Button>
@@ -99,6 +112,7 @@ export default function ContactMe({ contactMe }) {
                         isExternal
                         onClick={() => handleClick('contact_email')}
                         _hover={{ textDecoration: "none" }}
+                        width={{ base: "100%", sm: "auto" }}
                     >
                         <Button
                             pos="static"
@@ -113,6 +127,7 @@ export default function ContactMe({ contactMe }) {
                                 color: "black"
                             }}
                             transition="all 0.3s ease"
+                            width={{ base: "100%", sm: "auto" }}
                         >
                             Email
                         </Button>
@@ -122,6 +137,7 @@ export default function ContactMe({ contactMe }) {
                         isExternal
                         onClick={() => handleClick('contact_resume')}
                         _hover={{ textDecoration: "none" }}
+                        width={{ base: "100%", sm: "auto" }}
                     >
                         <Button
                             pos="static"
@@ -136,6 +152,7 @@ export default function ContactMe({ contactMe }) {
                                 color: "black"
                             }}
                             transition="all 0.3s ease"
+                            width={{ base: "100%", sm: "auto" }}
                         >
                             Resume
                         </Button>
