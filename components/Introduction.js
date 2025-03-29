@@ -78,10 +78,9 @@ export default function Introduction({ introduction }) {
                     letterSpacing="-1.6px"
                     whiteSpace="pre-wrap"
                 >
-                    Flutter Developer & Data Science Enthusiast.{' '}
-                    {isLargerThan800
-                        ? 'with an\ninterest in Data Science.'
-                        : 'with an interest in Data Science.'}
+                    Mobile App Developer & {isLargerThan800
+                        ? 'Data Science\nEnthusiast.'
+                        : 'Data Science Enthusiast.'}
                 </Heading>
             </SlideFade>
 
@@ -121,53 +120,71 @@ export default function Introduction({ introduction }) {
                 in={true}
             >
                 <Stack isInline spacing={4}>
-                    <Link href="https://github.com/Asif-Shah786" isExternal>
+                    <Link
+                        href="https://github.com/Asif-Shah786"
+                        isExternal
+                        _hover={{ textDecoration: "none" }}
+                    >
                         <Button
                             pos="static"
                             color="white"
-                            bg="button1"
-                            _hover={{
-                                bg: "rgba(60, 207, 145, 0.8)",
-                                transform: "translateY(-2px)"
-                            }}
-                            transition="all 0.3s ease"
-                            leftIcon={<FaGithub color="white" />}
+                            bg="rgba(60, 207, 145, 0.05)"
+                            borderWidth="1px"
+                            borderColor="button1"
+                            leftIcon={<FaGithub fill="#3CCF91" />}
                             onClick={() => handleClick('introduction_github')}
                             size={isLargerThan800 ? 'md' : 'sm'}
+                            _hover={{
+                                bg: "button1",
+                                color: "black"
+                            }}
+                            transition="all 0.3s ease"
                         >
                             Github
                         </Button>
                     </Link>
-                    <Link href="https://linkedin.com/in/syedasif007" isExternal>
+                    <Link
+                        href="https://linkedin.com/in/syedasif007"
+                        isExternal
+                        _hover={{ textDecoration: "none" }}
+                    >
                         <Button
                             pos="static"
                             color="white"
-                            bg="button1"
-                            _hover={{
-                                bg: "rgba(60, 207, 145, 0.8)",
-                                transform: "translateY(-2px)"
-                            }}
-                            transition="all 0.3s ease"
-                            leftIcon={<FaLinkedin color="white" />}
+                            bg="rgba(60, 207, 145, 0.05)"
+                            borderWidth="1px"
+                            borderColor="button1"
+                            leftIcon={<FaLinkedin fill="#3CCF91" />}
                             onClick={() => handleClick('introduction_linkedin')}
                             size={isLargerThan800 ? 'md' : 'sm'}
+                            _hover={{
+                                bg: "button1",
+                                color: "black"
+                            }}
+                            transition="all 0.3s ease"
                         >
                             LinkedIn
                         </Button>
                     </Link>
-                    <Link href="mailto:asif.shah9091@gmail.com" isExternal>
+                    <Link
+                        href="mailto:asif.shah9091@gmail.com"
+                        isExternal
+                        _hover={{ textDecoration: "none" }}
+                    >
                         <Button
                             pos="static"
                             color="white"
-                            bg="button1"
-                            _hover={{
-                                bg: "rgba(60, 207, 145, 0.8)",
-                                transform: "translateY(-2px)"
-                            }}
-                            transition="all 0.3s ease"
-                            leftIcon={<FaEnvelope fill="white" />}
+                            bg="rgba(60, 207, 145, 0.05)"
+                            borderWidth="1px"
+                            borderColor="button1"
+                            leftIcon={<FaEnvelope fill="#3CCF91" />}
                             onClick={() => handleClick('introduction_email')}
                             size={isLargerThan800 ? 'md' : 'sm'}
+                            _hover={{
+                                bg: "button1",
+                                color: "black"
+                            }}
+                            transition="all 0.3s ease"
                         >
                             Email
                         </Button>
