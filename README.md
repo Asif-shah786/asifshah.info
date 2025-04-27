@@ -15,7 +15,7 @@ Feel free to fork this repository to make your own portfolio, and if you liked t
 Create an `.env.local` and follow the variable name based on `.env.example` and get the API Keys based on the steps below  
 
 <details>
-<summary>Contentful API Keys</summary>
+<summary>Contentful API Keys </summary>
 <p>
 <br>
 1. Create a <a href="https://www.contentful.com/sign-up/">Contentful</a> account <br>
